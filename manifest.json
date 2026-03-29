@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Sensitive Content Blocker",
+  "version": "1.0",
+  "description": "Helps you regulate and block sensitive and adult content.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Blocker Options"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "adult_blocklist",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}

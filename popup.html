@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blocker Options</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Sensitive Content Blocker</h1>
+  </div>
+  
+  <div class="settings-container">
+    <div class="setting-row">
+      <div class="setting-info">
+        <h3>Master Toggle</h3>
+        <p>Enable or disable the blocker entirely.</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="masterToggle" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="setting-row">
+      <div class="setting-info">
+        <h3>Keyword Filtering</h3>
+        <p>Hide or blur sensitive words on the page.</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="keywordToggle" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
