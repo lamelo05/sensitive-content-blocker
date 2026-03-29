@@ -1,5 +1,17 @@
-// Initialize extension state
+// Check Incognito Access (Option A: Startup & Install)
+function checkIncognitoAccess() {
+  chrome.extension.isAllowedIncognitoAccess((isAllowed) => {
+    if (!isAllowed) {
+      // Nag the user by opening a new tab to our beautiful warning screen
+      chrome.tabs.create({ url: chrome.runtime.getURL('nag.html') });
+    }
+  });
+}
+
+// Initialize extension state (runs on install/update)
 chrome.runtime.onInstalled.addListener(() => {
+  checkIncognitoAccess();
+  
   chrome.storage.local.get(['masterEnabled'], (result) => {
     if (result.masterEnabled !== false) {
       chrome.storage.local.set({ masterEnabled: true });
@@ -8,6 +20,11 @@ chrome.runtime.onInstalled.addListener(() => {
       disableBlocking();
     }
   });
+});
+
+// Run every time the Chrome browser is started
+chrome.runtime.onStartup.addListener(() => {
+  checkIncognitoAccess();
 });
 
 // Listen for messages from the popup UI

@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "Sensitive Content Blocker",
   "version": "1.0",
+  "incognito": "spanning",
   "description": "Helps you regulate and block sensitive and adult content.",
   "permissions": [
     "storage",
